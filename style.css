@@ -1,0 +1,106 @@
+/* This style sheet configures the basic common style across the whole
+   site.
+
+@import url("./css/typeface.css");
+*/
+
+html {
+    --background: #e7e7e7;
+    --foreground: #202010;
+}
+
+div#content {
+    background: #fefefc;
+    color: #202010;
+    margin-top: 32px;
+    padding-top: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+body {
+    font-family: Charter, Source Han Serif CN, serif;
+    font-size: 18px;
+    line-height: 1.4;
+    background-color: var(--background);
+    color: var(--foreground);
+    margin-bottom: 4em;
+}
+
+:lang(ja) {
+    font-family: Source Han Serif JP, serif;
+}
+
+::selection {
+    color: var(--background);
+    background-color: var(--foreground);
+}
+
+:link, :visited {
+    color: rgb(0, 112, 201);
+    /* No underline. */
+    text-decoration: none;
+}
+
+:link:hover {
+    text-decoration: underline;
+}
+
+div#org-div-home-and-up-index-page, div#org-div-home-and-up,
+div#org-page-header {
+    display: flex;
+    justify-content: space-between;
+    font-family: Helvetica;
+}
+
+#text-table-of-contents :link, #text-table-of-contents :visited,
+#org-div-home-and-up-index-page a, #org-div-home-and-up a,
+#org-page-header a {
+    /* Link in TOC and headline remain black */
+    Color: var(--foreground);
+}
+
+
+#postamble {
+    /* Misc info at the bottom */
+    margin-top: 3em;
+    font-size: 14px;
+}
+
+#postamble p {
+    margin-bottom: 0.5em;
+    margin-top: 0em;
+}
+
+div.like-button {
+    margin-bottom: 3em;
+}
+
+/* Prevent super and subscript from changing line height. */
+sup, sub {
+    vertical-align: baseline;
+    position: relative;
+    top: -0.4em;
+}
+sub {
+    top: 0.4em;
+}
+
+/* Footer. */
+.footdef {
+    /* make footnote number and content to be on th same line */
+    display: flex;
+}
+
+.footdef sup {
+    top: 1pt;
+}
+
+.footpara p {
+    margin-left: 1em;
+}
+
+/* Org header tags */
+span.tag {
+    font-size: 14px;;
+}

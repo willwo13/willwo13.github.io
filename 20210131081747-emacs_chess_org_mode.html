@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-02-02 Tue 21:34 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Emacs chess &amp; Org mode</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Maurizio Minelli" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css"/>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs chess &amp; Org mode</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org9c88674">Abstract</a></li>
+<li><a href="#org7ed5c73">Screenshot&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ATTACH">ATTACH</span></span></a></li>
+<li><a href="#org0ccd8c1">Prerequisits</a></li>
+<li><a href="#org38531a3">Usage</a></li>
+<li><a href="#org31a4b44">Fine tune emacs-chess settings</a></li>
+<li><a href="#org79dc6df">Helper functions</a></li>
+<li><a href="#org810db47">Org Babl execute block</a></li>
+<li><a href="#org6dc185e">Render with python</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9c88674" class="outline-2">
+<h2 id="org9c88674">Abstract</h2>
+<div class="outline-text-2" id="text-org9c88674">
+<p>
+Wouldn&rsquo;t be nice to visualize and analyze chess PGN source blocks from notes
+written in org-mode with emacs-chess. When we <code>C-c C-c</code> on the org-bable source
+block an onubtrisve chess board should open with the default functionality of
+emacs-chess.
+</p>
+
+<ul class="org-ul">
+<li>Open a chess boards when <code>C-c C-c</code> in org-babel PGN block</li>
+<li>When a chessboard is open, inert the game back as babel PGN source block</li>
+<li>Start an engine for analysis and show the recomended moves</li>
+<li>Make sane defaults for smaller chessboard leaving room for PGN display and
+chess analysis output, preferably all in one window.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7ed5c73" class="outline-2">
+<h2 id="org7ed5c73">Screenshot&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ATTACH">ATTACH</span></span></h2>
+<div class="outline-text-2" id="text-org7ed5c73">
+
+<div id="org4609fbf" class="figure">
+<p><img src="file:///home/mau/Notes/.attach/5e/6c4866-5270-492a-86d7-2b2dba8a1597/2021-01-31_13-33-58_screenshot.png" alt="2021-01-31_13-33-58_screenshot.png" />
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org0ccd8c1" class="outline-2">
+<h2 id="org0ccd8c1">Prerequisits</h2>
+<div class="outline-text-2" id="text-org0ccd8c1">
+<ul class="org-ul">
+<li>emacs-chess</li>
+<li>stockfish</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org38531a3" class="outline-2">
+<h2 id="org38531a3">Usage</h2>
+<div class="outline-text-2" id="text-org38531a3">
+<p>
+This is what we wan&rsquo;t. Write org-babel source block as pgn notation and then
+with <code>C-c C-c</code> the boards open in alaysis mode and we can edit the pgn and
+visualize/update the board.
+</p>
+
+<p>
+The board is interactive as expected and we can use the default chess-board key
+map. The full keybindings can be shown like usual with <code>C-h m</code> f.ex:
+</p>
+
+<ul class="org-ul">
+<li><code>&lt;</code> move to start of the game</li>
+<li><code>&gt;</code> move to end of the game</li>
+<li><code>.</code> show next move</li>
+<li><code>,</code> show previous move</li>
+<li><code>C-y</code> yank the board position as FEN text</li>
+<li><code>I</code> invert, rotate the board black/white</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-pgn">[<span style="color: #ff79c6;">Event</span> <span style="color: #f1fa8c;">"Checkmate the opponent in 1 move"</span>]
+[<span style="color: #ff79c6;">Site</span> <span style="color: #f1fa8c;">"lichess.org"</span>]
+[<span style="color: #ff79c6;">FEN</span> <span style="color: #f1fa8c;">"r4nk1/pp2r1p1/2p1P2p/3p1P1N/8/8/PPPK4/6RR w - - 0 1"</span>]
+
+1. Ng7 Rg7.
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org31a4b44" class="outline-2">
+<h2 id="org31a4b44">Fine tune emacs-chess settings</h2>
+<div class="outline-text-2" id="text-org31a4b44">
+<p>
+Images of the pieces are compatible with xboard and are locaed in
+<code>chess-images-directory</code> but is not a priority to get more images,the default are
+fine. The following settings gives a nice small board on 4K display with 125%
+scaling.
+</p>
+</div>
+
+<div id="outline-container-chess-config" class="outline-3">
+<h3 id="chess-config">Configuration</h3>
+<div class="outline-text-3" id="text-chess-config">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #61bfff;">(</span><span style="color: #ff79c6;">after!</span> chess
+  <span style="color: #ff79c6;">(</span><span style="color: #ff79c6;">setq</span> chess-images-default-size <span style="color: #bd93f9; font-weight: bold;">52</span>
+        chess-images-dark-color <span style="color: #f1fa8c;">"#44475a"</span>
+        chess-images-light-color <span style="color: #f1fa8c;">"#999999"</span>
+        chess-images-border-width <span style="color: #bd93f9; font-weight: bold;">1</span>
+        chess-default-engine <span style="color: #ff79c6;">'</span><span style="color: #50fa7b;">(</span><span style="color: #f1fa8c;">"chess-stockfish"</span><span style="color: #50fa7b;">)</span>
+        chess-stockfish-path <span style="color: #f1fa8c;">"/usr/games/stockfish"</span><span style="color: #ff79c6;">)</span><span style="color: #61bfff;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org79dc6df" class="outline-2">
+<h2 id="org79dc6df">Helper functions</h2>
+<div class="outline-text-2" id="text-org79dc6df">
+<p>
+We need some herlper functions to make tailor the behavior as we want.
+</p>
+</div>
+
+<div id="outline-container-chess-helpers" class="outline-3">
+<h3 id="chess-helpers">Helpers</h3>
+<div class="outline-text-3" id="text-chess-helpers">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #61bfff;">(</span><span style="color: #ff79c6;">defun</span> <span style="color: #50fa7b;">display-pgn</span> <span style="color: #ff79c6;">(</span>pgn<span style="color: #ff79c6;">)</span>
+  <span style="color: #8995ba;">"Helper function to display a chess board from a pgn. We use</span>
+<span style="color: #8995ba;">  specifique window settings and this function will also allow</span>
+<span style="color: #8995ba;">  for starting in analyze mode. For now this is the bare minimum</span>
+<span style="color: #8995ba;">  to achieve what we want."</span>
+  <span style="color: #ff79c6;">(</span><span style="color: #ff79c6;">let</span> <span style="color: #50fa7b;">(</span><span style="color: #61bfff;">(</span>display <span style="color: #ff79c6;">(</span><span style="color: #8be9fd;">get-buffer</span> <span style="color: #f1fa8c;">"*Chessboard*"</span><span style="color: #ff79c6;">)</span><span style="color: #61bfff;">)</span><span style="color: #50fa7b;">)</span>
+    <span style="color: #50fa7b;">(</span><span style="color: #ff79c6;">if</span> display
+        <span style="color: #61bfff;">(</span><span style="color: #ff79c6;">progn</span>
+          <span style="color: #ff79c6;">(</span><span style="color: #50fa7b;">chess-display-set-game</span> display <span style="color: #50fa7b;">(</span><span style="color: #50fa7b;">chess-pgn-to-game</span> pgn<span style="color: #50fa7b;">)</span><span style="color: #ff79c6;">)</span><span style="color: #61bfff;">)</span>
+      <span style="color: #61bfff;">(</span><span style="color: #ff79c6;">setq</span> display <span style="color: #ff79c6;">(</span><span style="color: #ff79c6;">let</span> <span style="color: #50fa7b;">(</span><span style="color: #61bfff;">(</span>chess-display-style <span style="color: #ff79c6;">'</span><span style="color: #8be9fd;">chess-images</span><span style="color: #61bfff;">)</span><span style="color: #50fa7b;">)</span>
+                      <span style="color: #50fa7b;">(</span><span style="color: #50fa7b;">chess-module-create</span> <span style="color: #ff79c6;">'</span><span style="color: #8be9fd;">chess-display</span>
+                                           <span style="color: #61bfff;">(</span><span style="color: #50fa7b;">chess-pgn-to-game</span> pgn<span style="color: #61bfff;">)</span>
+                                           <span style="color: #f1fa8c;">"*Chessboard*"</span>
+                                           t<span style="color: #50fa7b;">)</span><span style="color: #ff79c6;">)</span><span style="color: #61bfff;">)</span><span style="color: #50fa7b;">)</span>
+    <span style="color: #50fa7b;">(</span><span style="color: #ff79c6;">unless</span> display
+      <span style="color: #61bfff;">(</span><span style="color: #50fa7b;">error</span> <span style="color: #f1fa8c;">"No Chessboard created"</span><span style="color: #61bfff;">)</span><span style="color: #50fa7b;">)</span>
+    <span style="color: #50fa7b;">(</span><span style="color: #50fa7b;">chess-display-update</span> display<span style="color: #50fa7b;">)</span>
+    <span style="color: #50fa7b;">(</span><span style="color: #50fa7b;">display-buffer</span> display
+                    <span style="color: #ff79c6;">'</span><span style="color: #61bfff;">(</span><span style="color: #ff79c6;">(</span><span style="color: #50fa7b;">display-buffer-reuse-window</span> display-buffer-in-previous-window display-buffer-in-side-window<span style="color: #ff79c6;">)</span>
+                      <span style="color: #ff79c6;">(</span>side . left<span style="color: #ff79c6;">)</span>
+                      <span style="color: #ff79c6;">(</span>slot . <span style="color: #bd93f9; font-weight: bold;">0</span><span style="color: #ff79c6;">)</span>
+                      <span style="color: #ff79c6;">(</span><span style="color: #8be9fd;">window-height</span> . <span style="color: #bd93f9; font-weight: bold;">20</span><span style="color: #ff79c6;">)</span>
+                      <span style="color: #ff79c6;">(</span><span style="color: #8be9fd;">window-width</span> . <span style="color: #bd93f9; font-weight: bold;">41</span><span style="color: #ff79c6;">)</span>
+                      <span style="color: #ff79c6;">(</span>reusable-frames . visible<span style="color: #ff79c6;">)</span><span style="color: #61bfff;">)</span><span style="color: #50fa7b;">)</span>
+    display<span style="color: #ff79c6;">)</span><span style="color: #61bfff;">)</span>
+
+<span style="color: #61bfff;">(</span><span style="color: #ff79c6;">defun</span> <span style="color: #50fa7b;">+insert-pgn-from-chess-game</span> <span style="color: #ff79c6;">()</span>
+  <span style="color: #8995ba;">"If there is an open *Chessboard* buffer tranform the game to</span>
+<span style="color: #8995ba;">pgn and insert it in the current buffer as bable source block."</span>
+  <span style="color: #ff79c6;">(</span><span style="color: #ff79c6;">interactive</span><span style="color: #ff79c6;">)</span>
+  <span style="color: #ff79c6;">(</span><span style="color: #8be9fd;">insert</span>
+   <span style="color: #50fa7b;">(</span><span style="color: #8be9fd;">concat</span> <span style="color: #f1fa8c;">"#+begin_src pgn\n"</span>
+          <span style="color: #61bfff;">(</span><span style="color: #50fa7b;">chess-game-to-pgn</span>
+           <span style="color: #ff79c6;">(</span>chess-module-game <span style="color: #50fa7b;">(</span><span style="color: #8be9fd;">get-buffer</span> <span style="color: #f1fa8c;">"*Chessboard*"</span><span style="color: #50fa7b;">)</span><span style="color: #ff79c6;">)</span>
+           t t<span style="color: #61bfff;">)</span>
+          <span style="color: #f1fa8c;">"#+end_src"</span><span style="color: #50fa7b;">)</span><span style="color: #ff79c6;">)</span><span style="color: #61bfff;">)</span>
+</pre>
+</div>
+
+<p>
+If there is an open <b>Chessboard</b> buffer tranform the game to pgn and insert it in
+the current buffer as bable source block.
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org810db47" class="outline-2">
+<h2 id="org810db47">Org Babl execute block</h2>
+<div class="outline-text-2" id="text-org810db47">
+<p>
+We need to define the execute function for org-babel. Idally this will return an
+rendered svg image.
+</p>
+</div>
+
+<div id="outline-container-chess-babel" class="outline-3">
+<h3 id="chess-babel">Org babel execute</h3>
+<div class="outline-text-3" id="text-chess-babel">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #61bfff;">(</span><span style="color: #ff79c6;">defun</span> <span style="color: #50fa7b;">org-babel-execute:pgn</span> <span style="color: #ff79c6;">(</span>body params<span style="color: #ff79c6;">)</span>
+  <span style="color: #8995ba;">"Execute a block of Template code with org-babel.</span>
+<span style="color: #8995ba;">This function is called by `</span><span style="color: #8be9fd;">org-babel-execute-src-block</span><span style="color: #8995ba;">'"</span>
+  <span style="color: #ff79c6;">(</span><span style="color: #ff79c6;">let*</span> <span style="color: #50fa7b;">(</span><span style="color: #61bfff;">(</span>processed-params <span style="color: #ff79c6;">(</span><span style="color: #50fa7b;">org-babel-process-params</span> params<span style="color: #ff79c6;">)</span><span style="color: #61bfff;">)</span>
+         <span style="color: #6272a4;">;; </span><span style="color: #6272a4;">variables assigned for use in the block</span>
+         <span style="color: #61bfff;">(</span>vars <span style="color: #ff79c6;">(</span><span style="color: #50fa7b;">second</span> processed-params<span style="color: #ff79c6;">)</span><span style="color: #61bfff;">)</span>
+         <span style="color: #61bfff;">(</span>result-params <span style="color: #ff79c6;">(</span><span style="color: #50fa7b;">third</span> processed-params<span style="color: #ff79c6;">)</span><span style="color: #61bfff;">)</span>
+         <span style="color: #6272a4;">;; </span><span style="color: #6272a4;">either OUTPUT or VALUE which should behave as described above</span>
+         <span style="color: #61bfff;">(</span>result-type <span style="color: #ff79c6;">(</span><span style="color: #50fa7b;">fourth</span> processed-params<span style="color: #ff79c6;">)</span><span style="color: #61bfff;">)</span><span style="color: #50fa7b;">)</span>
+    <span style="color: #50fa7b;">(</span><span style="color: #50fa7b;">display-pgn</span> body<span style="color: #50fa7b;">)</span><span style="color: #ff79c6;">)</span><span style="color: #61bfff;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org6dc185e" class="outline-2">
+<h2 id="org6dc185e">Render with python</h2>
+<div class="outline-text-2" id="text-org6dc185e">
+<pre class="example" id="orgb0ae22e">
+[Event "Checkmate the opponent in 1 move"]
+[Site "lichess.org"]
+[FEN "r4nk1/pp2r1p1/2p1P2p/3p1P1N/8/8/PPPK4/6RR w - - 0 1"]
+
+1. Ng7 Rg7.
+</pre>
+
+
+<p>
+A bit of python code allows to render a board as svg
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #ff79c6;">import</span> chess
+<span style="color: #ff79c6;">import</span> chess.svg
+<span style="color: #ff79c6;">import</span> chess.pgn
+<span style="color: #ff79c6;">import</span> io
+
+pgn = io.StringIO(arg)
+game = chess.pgn.read_game(pgn)
+board = game.board()
+
+<span style="color: #ff79c6;">for</span> move <span style="color: #ff79c6;">in</span> game.mainline_moves():
+  board.push(move)
+
+<span style="color: #ff79c6;">with</span> <span style="color: #ffb86c;">open</span>(<span style="color: #f1fa8c;">'/tmp/chess.svg'</span>, <span style="color: #f1fa8c;">'w'</span>) <span style="color: #ff79c6;">as</span> ohdl:
+    ohdl.write(chess.svg.board(board, size=<span style="color: #bd93f9; font-weight: bold;">350</span>))
+
+<span style="color: #ff79c6;">return</span> <span style="color: #f1fa8c;">"/tmp/chess.svg"</span>
+</pre>
+</div>
+
+
+<div id="orgefc7010" class="figure">
+<p><object type="image/svg+xml" data="file:///tmp/chess.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2021-01-31 Sun 00:00</p>
+<p class="author">Author: Maurizio Minelli</p>
+<p class="date">Created: 2021-02-02 Tue 21:34</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.5)</p>
+</div>
+</body>
+</html>
