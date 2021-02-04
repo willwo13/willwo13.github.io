@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2021-02-04 Thu 21:26 -->
+<!-- 2021-02-04 Thu 22:14 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Emacs chess &amp; Org mode</title>
@@ -18,6 +18,7 @@
    <a accesskey="H" href="index.html"> HOME </a>
 </div>
 <div>
+<a href="notes.xml"> RSS </a> |
 <a href="https://github.com/willwo13/willwo13.github.io"> Source </a> |
 <a href="https://creativecommons.org/licenses/by-sa/4.0/"> License </a>
 </div>
@@ -29,21 +30,21 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org8b677a5">Abstract</a></li>
-<li><a href="#orgbceb1ca">Screenshot&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ATTACH">ATTACH</span></span></a></li>
-<li><a href="#org2f9589f">Prerequisits</a></li>
-<li><a href="#org0609017">Usage</a></li>
-<li><a href="#org1e7aa30">Fine tune emacs-chess settings</a></li>
-<li><a href="#org122c9fa">Helper functions</a></li>
-<li><a href="#org3931561">Org Babl execute block</a></li>
-<li><a href="#org76195de">Render with python</a></li>
+<li><a href="#org7625453">Abstract</a></li>
+<li><a href="#orgb34a411">Screenshot&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ATTACH">ATTACH</span></span></a></li>
+<li><a href="#orgbce8249">Prerequisits</a></li>
+<li><a href="#orgeaf6b54">Usage</a></li>
+<li><a href="#org9c670e4">Fine tune emacs-chess settings</a></li>
+<li><a href="#orgc6ab289">Helper functions</a></li>
+<li><a href="#org1faf887">Org Babl execute block</a></li>
+<li><a href="#org5b6f568">Render with python</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org8b677a5" class="outline-2">
-<h2 id="org8b677a5">Abstract</h2>
-<div class="outline-text-2" id="text-org8b677a5">
+<div id="outline-container-org7625453" class="outline-2">
+<h2 id="org7625453">Abstract</h2>
+<div class="outline-text-2" id="text-org7625453">
 <p>
 Wouldn&rsquo;t be nice to visualize and analyze chess PGN source blocks from notes
 written in org-mode with emacs-chess. When we <code>C-c C-c</code> on the org-bable source
@@ -61,11 +62,11 @@ chess analysis output, preferably all in one window.</li>
 </div>
 </div>
 
-<div id="outline-container-orgbceb1ca" class="outline-2">
-<h2 id="orgbceb1ca">Screenshot&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ATTACH">ATTACH</span></span></h2>
-<div class="outline-text-2" id="text-orgbceb1ca">
+<div id="outline-container-orgb34a411" class="outline-2">
+<h2 id="orgb34a411">Screenshot&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ATTACH">ATTACH</span></span></h2>
+<div class="outline-text-2" id="text-orgb34a411">
 
-<div id="org294ad2e" class="figure">
+<div id="orgd0efd31" class="figure">
 <p><img src="file:///home/mau/Notes/.attach/5e/6c4866-5270-492a-86d7-2b2dba8a1597/2021-01-31_13-33-58_screenshot.png" alt="2021-01-31_13-33-58_screenshot.png">
 </p>
 </div>
@@ -73,9 +74,9 @@ chess analysis output, preferably all in one window.</li>
 </div>
 
 
-<div id="outline-container-org2f9589f" class="outline-2">
-<h2 id="org2f9589f">Prerequisits</h2>
-<div class="outline-text-2" id="text-org2f9589f">
+<div id="outline-container-orgbce8249" class="outline-2">
+<h2 id="orgbce8249">Prerequisits</h2>
+<div class="outline-text-2" id="text-orgbce8249">
 <ul class="org-ul">
 <li>emacs-chess</li>
 <li>stockfish</li>
@@ -83,9 +84,9 @@ chess analysis output, preferably all in one window.</li>
 </div>
 </div>
 
-<div id="outline-container-org0609017" class="outline-2">
-<h2 id="org0609017">Usage</h2>
-<div class="outline-text-2" id="text-org0609017">
+<div id="outline-container-orgeaf6b54" class="outline-2">
+<h2 id="orgeaf6b54">Usage</h2>
+<div class="outline-text-2" id="text-orgeaf6b54">
 <p>
 This is what we wan&rsquo;t. Write org-babel source block as pgn notation and then
 with <code>C-c C-c</code> the boards open in alaysis mode and we can edit the pgn and
@@ -118,9 +119,9 @@ map. The full keybindings can be shown like usual with <code>C-h m</code> f.ex:
 </div>
 
 
-<div id="outline-container-org1e7aa30" class="outline-2">
-<h2 id="org1e7aa30">Fine tune emacs-chess settings</h2>
-<div class="outline-text-2" id="text-org1e7aa30">
+<div id="outline-container-org9c670e4" class="outline-2">
+<h2 id="org9c670e4">Fine tune emacs-chess settings</h2>
+<div class="outline-text-2" id="text-org9c670e4">
 <p>
 Images of the pieces are compatible with xboard and are locaed in
 <code>chess-images-directory</code> but is not a priority to get more images,the default are
@@ -147,9 +148,9 @@ scaling.
 </div>
 
 
-<div id="outline-container-org122c9fa" class="outline-2">
-<h2 id="org122c9fa">Helper functions</h2>
-<div class="outline-text-2" id="text-org122c9fa">
+<div id="outline-container-orgc6ab289" class="outline-2">
+<h2 id="orgc6ab289">Helper functions</h2>
+<div class="outline-text-2" id="text-orgc6ab289">
 <p>
 We need some herlper functions to make tailor the behavior as we want.
 </p>
@@ -207,9 +208,9 @@ the current buffer as bable source block.
 </div>
 
 
-<div id="outline-container-org3931561" class="outline-2">
-<h2 id="org3931561">Org Babl execute block</h2>
-<div class="outline-text-2" id="text-org3931561">
+<div id="outline-container-org1faf887" class="outline-2">
+<h2 id="org1faf887">Org Babl execute block</h2>
+<div class="outline-text-2" id="text-org1faf887">
 <p>
 We need to define the execute function for org-babel. Idally this will return an
 rendered svg image.
@@ -237,10 +238,10 @@ rendered svg image.
 </div>
 
 
-<div id="outline-container-org76195de" class="outline-2">
-<h2 id="org76195de">Render with python</h2>
-<div class="outline-text-2" id="text-org76195de">
-<pre class="example" id="orgf691421">
+<div id="outline-container-org5b6f568" class="outline-2">
+<h2 id="org5b6f568">Render with python</h2>
+<div class="outline-text-2" id="text-org5b6f568">
+<pre class="example" id="orgc54334a">
 [Event "Checkmate the opponent in 1 move"]
 [Site "lichess.org"]
 [FEN "r4nk1/pp2r1p1/2p1P2p/3p1P1N/8/8/PPPK4/6RR w - - 0 1"]
@@ -272,16 +273,19 @@ board = game.board()
 </pre>
 </div>
 
-<p>
-<a href=""></a>
+
+<div id="org98ed61e" class="figure">
+<p><object type="image/svg+xml" data="file:///tmp/chess.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
 </p>
+</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: 2021-01-31 Sun 00:00</p>
 <p class="author">Author: Maurizio Minelli</p>
-<p class="date">Created: 2021-02-04 Thu 21:26</p>
+<p class="date">Created: 2021-02-04 Thu 22:14</p>
 <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.5)</p>
 </div>
 </body>

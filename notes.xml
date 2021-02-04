@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+	   xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	   xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	   xmlns:dc="http://purl.org/dc/elements/1.1/"
+	   xmlns:atom="http://www.w3.org/2005/Atom"
+	   xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	   xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	   xmlns:georss="http://www.georss.org/georss"
+     xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+     xmlns:media="http://search.yahoo.com/mrss/"><channel>
+  <title>Notes</title>
+  <atom:link href="https://minelli.lu/notes.xml" rel="self" type="application/rss+xml" />
+  <link>https://minelli.lu/</link>
+  <description><![CDATA[]]></description>
+  <language>en</language>
+  <pubDate>Thu, 04 Feb 2021 22:14:39 +0100</pubDate>
+  <lastBuildDate>Thu, 04 Feb 2021 22:14:39 +0100</lastBuildDate>
+  <generator>Emacs 27.1 Org-mode 9.5</generator>
+  <webMaster>m@minelli.lu (Maurizio Minelli)</webMaster>
+  <image>
+    <url>https://orgmode.org/img/org-mode-unicorn-logo.png</url>
+    <title>Notes</title>
+    <link>https://minelli.lu/</link>
+  </image>
+
+  <ul class="org-ul">
+    <li><a href="20210116181510-emacs_japanese.html">Emacs &amp; Japanese</a></li>
+    <li><a href="20210131081747-emacs_chess_org_mode.html">Emacs chess &amp; Org mode</a></li>
+    <li><a href="20210102181512-scrap_news.html">Scrap News</a></li>
+  </ul>
+</channel>
+</rss>
