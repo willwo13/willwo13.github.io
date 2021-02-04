@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2021-02-04 Thu 21:26 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scrap News</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="Maurizio Minelli">
+<link rel="stylesheet" type="text/css" href="style.css"/>
+<link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+<body>
+<div id="preamble" class="status">
+<div id="org-page-header">
+   <div>
+    <a accesskey="h" href="notes.html"> UP </a> |
+   <a accesskey="H" href="index.html"> HOME </a>
+</div>
+<div>
+<a href="https://github.com/willwo13/willwo13.github.io"> Source </a> |
+<a href="https://creativecommons.org/licenses/by-sa/4.0/"> License </a>
+</div>
+</div>
+</div>
+<div id="content">
+<h1 class="title">Scrap News</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org4700bda">Abstract</a></li>
+<li><a href="#orgb7ca4ff">Pre-requisists</a></li>
+<li><a href="#org05a5061">The python scripts</a></li>
+<li><a href="#org2454376">Gnus configuration</a></li>
+<li><a href="#orgc1d1028">Notes</a></li>
+<li><a href="#org299e376">Resources</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4700bda" class="outline-2">
+<h2 id="org4700bda">Abstract</h2>
+<div class="outline-text-2" id="text-org4700bda">
+<p>
+Why storing scraps in a Maildir?
+</p>
+
+<p>
+I would like to use Gnus reader to not only read my e-mails but also scraps of
+webpages I deam interesting. These pages are often formated as news article and
+could be directly scrapped as such.
+</p>
+
+<p>
+I&rsquo;m afraid that era where usenet was popular and the main place to find
+interesting posts is gone and nowdays information is scattered accross a
+multitude of custom webpages.
+</p>
+
+<ul class="org-ul">
+<li>Minimize context swtiching by remaining in the comformt of Emacs</li>
+<li>Same layout theme for reading and working</li>
+<li>Note taking with org-roam same Emacs workflow as usuall</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb7ca4ff" class="outline-2">
+<h2 id="orgb7ca4ff">Pre-requisists</h2>
+<div class="outline-text-2" id="text-orgb7ca4ff">
+</div>
+<div id="outline-container-org2411539" class="outline-3">
+<h3 id="org2411539">A python virtual environment</h3>
+<div class="outline-text-3" id="text-org2411539">
+<p>
+I have a global virtual environment which I use for stable system scripts.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #ffb86c;">export</span> VENV_SYS_PATH=<span style="color: #f1fa8c;">"</span><span style="color: #8be9fd;">$</span><span style="color: #f1fa8c;">HOME</span><span style="color: #f1fa8c;">/.venv/sys"</span>
+
+<span style="color: #bd93f9;">mkdir</span> -p <span style="color: #f1fa8c;">"</span><span style="color: #8be9fd;">$</span><span style="color: #f1fa8c;">VENV_SYS_PATH</span><span style="color: #f1fa8c;">"</span>
+
+<span style="color: #ff79c6;">if</span> <span style="color: #61bfff;">[</span> <span style="color: #bd93f9; font-weight: bold;">!</span> -d <span style="color: #f1fa8c;">"</span><span style="color: #8be9fd;">$</span><span style="color: #f1fa8c;">VENV_SYS_PATH</span><span style="color: #f1fa8c;">"</span> <span style="color: #61bfff;">]</span>; <span style="color: #ff79c6;">then</span>
+    python -m venv <span style="color: #f1fa8c;">"</span><span style="color: #8be9fd;">$</span><span style="color: #f1fa8c;">VENV_SYS_PATH</span><span style="color: #f1fa8c;">"</span>
+<span style="color: #ff79c6;">fi</span>
+
+<span style="color: #ffb86c;">source</span> <span style="color: #f1fa8c;">"</span><span style="color: #8be9fd;">$</span><span style="color: #f1fa8c;">VENV_SYS_PATH</span><span style="color: #f1fa8c;">/bin/activate"</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb976cf7" class="outline-3">
+<h3 id="orgb976cf7">Dependencies</h3>
+<div class="outline-text-3" id="text-orgb976cf7">
+<p>
+Insall the dependecies <a href="https://newspaper.readthedocs.io/en/latest/">Newspaper</a> and <a href="https://rich.readthedocs.io/en/stable/introduction.html">Rich</a> the later is used for fancy output.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">pip install newspaper rich
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org05a5061" class="outline-2">
+<h2 id="org05a5061">The python scripts</h2>
+<div class="outline-text-2" id="text-org05a5061">
+</div>
+<div id="outline-container-org46722bc" class="outline-3">
+<h3 id="org46722bc">Import dependencies</h3>
+<div class="outline-text-3" id="text-org46722bc">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #ff79c6;">import</span> logging
+<span style="color: #ff79c6;">from</span> mailbox <span style="color: #ff79c6;">import</span> Maildir
+<span style="color: #ff79c6;">from</span> email.message <span style="color: #ff79c6;">import</span> EmailMessage
+<span style="color: #ff79c6;">import</span> newspaper
+<span style="color: #ff79c6;">from</span> rich.logging <span style="color: #ff79c6;">import</span> RichHandler
+
+<span style="color: #6272a4;"># </span><span style="color: #6272a4;">configure rich logging</span>
+log = logging.getLogger(<span style="color: #f1fa8c;">"my_scrapper"</span>)
+log.addHandler(RichHandler())
+log.setLevel(logging.DEBUG)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc6f2493" class="outline-3">
+<h3 id="orgc6f2493">Configuration</h3>
+<div class="outline-text-3" id="text-orgc6f2493">
+<p>
+It&rsquo;s called <code>MAILDIR_PATH</code> becase we use it to instantiate the Maildir class and
+its&rsquo; true that the format is MAILDIR++ but we use this folder to store our News.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">MAILDIR_PATH = <span style="color: #f1fa8c;">'~/News'</span>
+
+URLS = { <span style="color: #f1fa8c;">'reddit_emacs'</span> : <span style="color: #f1fa8c;">'https://www.reddit.com/r/emacs/'</span> }
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org78de336" class="outline-3">
+<h3 id="org78de336">Store the article to maildir</h3>
+<div class="outline-text-3" id="text-org78de336">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #ff79c6;">def</span> <span style="color: #50fa7b;">store</span>(key, article, path=MAILDIR_PATH):
+  maildir = Maildir(path)
+  msg = EmailMessage()
+  msg[<span style="color: #f1fa8c;">'Subject'</span>] = article.title
+  msg.set_content(f<span style="color: #f1fa8c;">'{article.text}\n\n{article.url}\n'</span>)
+  folder = maildir.add_folder(key)
+  folder.add(msg)
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgd2ca018" class="outline-3">
+<h3 id="orgd2ca018">Scrap the news</h3>
+<div class="outline-text-3" id="text-orgd2ca018">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #ff79c6;">for</span> k,v <span style="color: #ff79c6;">in</span> URLS.items():
+  paper = newspaper.build(url)
+  log.info(<span style="color: #f1fa8c;">'Scrapping: %s'</span>, url)
+  <span style="color: #ff79c6;">for</span> article <span style="color: #ff79c6;">in</span> paper.article:
+    log.info(<span style="color: #f1fa8c;">'Download: %s'</span>, article.url)
+    <span style="color: #ff79c6;">try</span>:
+      article.download()
+      article.parse()
+    <span style="color: #ff79c6;">except</span> <span style="color: #bd93f9;">Exception</span> <span style="color: #ff79c6;">as</span> exc:
+      log.error(<span style="color: #f1fa8c;">'failed fetching'</span>, <span style="color: #ffb86c;">str</span>(exc))
+    <span style="color: #ff79c6;">if</span> <span style="color: #ff79c6;">not</span> article.text.strip():
+      <span style="color: #ff79c6;">continue</span>
+    store(key, article)
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org2454376" class="outline-2">
+<h2 id="org2454376">Gnus configuration</h2>
+<div class="outline-text-2" id="text-org2454376">
+<p>
+Simply add a secondary selection method:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp"><span style="color: #61bfff;">(</span>setq gnus-secondary-select-methods
+      '<span style="color: #ff79c6;">(</span><span style="color: #50fa7b;">(</span>nnmaildir <span style="color: #f1fa8c;">"gmail"</span>
+         <span style="color: #61bfff;">(</span>directory <span style="color: #f1fa8c;">"~/Mail/gmail/"</span><span style="color: #61bfff;">)</span><span style="color: #50fa7b;">)</span>
+        <span style="color: #50fa7b;">(</span>nnmaildir <span style="color: #f1fa8c;">"news"</span>
+         <span style="color: #61bfff;">(</span>directory <span style="color: #f1fa8c;">"~/News/"</span><span style="color: #61bfff;">)</span><span style="color: #50fa7b;">)</span><span style="color: #ff79c6;">)</span><span style="color: #61bfff;">)</span>
+</pre>
+</div>
+
+<p>
+And for now there is one last hicup. gnus doesn&rsquo;t read folders which starts with
+a DOT. Have to create a symbolic link to a non dot folder.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #bd93f9;">cd</span> ~/News
+<span style="color: #bd93f9;">ln</span> -s .reddit_emacs reddit_emacs
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgc1d1028" class="outline-2">
+<h2 id="orgc1d1028">Notes</h2>
+<div class="outline-text-2" id="text-orgc1d1028">
+<p>
+If you&rsquo;re intereseted in more powerfull packages there is <a href="https://pypi.org/project/news-fetch/">news-fetch</a> and
+<a href="https://pypi.org/project/news-please/">news-please</a> but they do too much for my simple use case.
+</p>
+
+<p>
+Note that <code>newspaper.build</code> will cache the already known urls in <code>/tmp/.newspaper/</code>
+and will only return new articles on consecutive runs.
+</p>
+
+<p>
+Might add a regular expression for fetching only specific URLs.
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-org299e376" class="outline-2">
+<h2 id="org299e376">Resources</h2>
+<div class="outline-text-2" id="text-org299e376">
+<p>
+<a href="https://github.com/fhamborg/Giveme5W1H">Giveme5W1H</a> might be an intersting library to analyse articles and highlight
+major important parts!
+</p>
+
+<p>
+<a href="https://github.com/fhamborg/news-please">news-please</a> might do a bit too much some articles seams to work other not. It
+will scrap too much if there is a limit to scrap the top 5 articles taht would
+be great. Also uses some other libs like <a href="https://github.com/codelucas/newspaper">newspaper</a> simple clean small lib might
+be more usefull than the full package.
+</p>
+
+<p>
+There is <a href="https://github.com/santhoshse7en/news-fetch">news-fetch</a> which seams to have been built on top of new-please.
+</p>
+
+<p>
+The first plugin I came accross is <a href="https://github.com/rcarmo/rss2imap">rss2imap</a> but it is written in ruby and the
+last commit was 5 years ago.
+</p>
+
+<p>
+Reddit has an API wrapper for python example usage found in this article <a href="https://www.storybench.org/how-to-scrape-reddit-with-python/">How to
+scrape Reddit with Python</a>.
+</p>
+
+<p>
+I would like the same for Twitter, select topics and download the top 5 tweets.
+Twitter has an official API <a href="https://python-twitter.readthedocs.io/en/latest/">pyton-twitter</a>.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2021-01-31 Sun 00:00</p>
+<p class="author">Author: Maurizio Minelli</p>
+<p class="date">Created: 2021-02-04 Thu 21:26</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.5)</p>
+</div>
+</body>
+</html>
