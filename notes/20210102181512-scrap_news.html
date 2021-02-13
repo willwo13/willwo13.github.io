@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2021-02-13 Sat 18:07 -->
+<!-- 2021-02-13 Sat 18:37 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Scrap News</title>
@@ -10,12 +10,25 @@
 <link rel="stylesheet" type="text/css" href="../style.css"/>
 </head>
 <body>
+<div id="preamble" class="status">
+<div id="org-page-header">
+    <div>
+     <a accesskey="h" href="notes.html"> UP </a> |
+    <a accesskey="H" href="/index.html"> HOME </a>
+</div>
+<div>
+<a href="notes.xml"> RSS </a> |
+<a href="https://github.com/willwo13/willwo13.github.io"> Source </a> |
+<a href="https://creativecommons.org/licenses/by-sa/4.0/"> License </a>
+</div>
+</div>
+</div>
 <div id="content">
 <header>
 <h1 class="title">Scrap News</h1>
 </header>
-<div id="outline-container-org7928e60" class="outline-2">
-<h2 id="org7928e60"><span class="section-number-2">1</span> Abstract</h2>
+<div id="outline-container-org89c3e21" class="outline-2">
+<h2 id="org89c3e21"><span class="section-number-2">1</span> Abstract</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Why storing scraps in a Maildir?
@@ -41,13 +54,13 @@ multitude of custom webpages.
 </div>
 </div>
 
-<div id="outline-container-org85d67ab" class="outline-2">
-<h2 id="org85d67ab"><span class="section-number-2">2</span> Pre-requisists</h2>
+<div id="outline-container-org597115e" class="outline-2">
+<h2 id="org597115e"><span class="section-number-2">2</span> Pre-requisists</h2>
 <div class="outline-text-2" id="text-2">
 </div>
 
-<div id="outline-container-org237a667" class="outline-3">
-<h3 id="org237a667"><span class="section-number-3">2.1</span> A python virtual environment</h3>
+<div id="outline-container-org3e957e1" class="outline-3">
+<h3 id="org3e957e1"><span class="section-number-3">2.1</span> A python virtual environment</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 I have a global virtual environment which I use for stable system scripts.
@@ -68,8 +81,8 @@ I have a global virtual environment which I use for stable system scripts.
 </div>
 </div>
 
-<div id="outline-container-org4b32718" class="outline-3">
-<h3 id="org4b32718"><span class="section-number-3">2.2</span> Dependencies</h3>
+<div id="outline-container-org7ab5312" class="outline-3">
+<h3 id="org7ab5312"><span class="section-number-3">2.2</span> Dependencies</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 Insall the dependecies <a href="https://newspaper.readthedocs.io/en/latest/">Newspaper</a> and <a href="https://rich.readthedocs.io/en/stable/introduction.html">Rich</a> the later is used for fancy output.
@@ -84,13 +97,13 @@ Insall the dependecies <a href="https://newspaper.readthedocs.io/en/latest/">New
 </div>
 
 
-<div id="outline-container-orgc2cae5b" class="outline-2">
-<h2 id="orgc2cae5b"><span class="section-number-2">3</span> The python scripts</h2>
+<div id="outline-container-org05bd666" class="outline-2">
+<h2 id="org05bd666"><span class="section-number-2">3</span> The python scripts</h2>
 <div class="outline-text-2" id="text-3">
 </div>
 
-<div id="outline-container-orge52a88c" class="outline-3">
-<h3 id="orge52a88c"><span class="section-number-3">3.1</span> Import dependencies</h3>
+<div id="outline-container-org434fe51" class="outline-3">
+<h3 id="org434fe51"><span class="section-number-3">3.1</span> Import dependencies</h3>
 <div class="outline-text-3" id="text-3-1">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #ff79c6;">import</span> logging
@@ -108,8 +121,8 @@ log.setLevel(logging.DEBUG)
 </div>
 </div>
 
-<div id="outline-container-orga2dc7d2" class="outline-3">
-<h3 id="orga2dc7d2"><span class="section-number-3">3.2</span> Configuration</h3>
+<div id="outline-container-org8b9c29b" class="outline-3">
+<h3 id="org8b9c29b"><span class="section-number-3">3.2</span> Configuration</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 It&rsquo;s called <code>MAILDIR_PATH</code> becase we use it to instantiate the Maildir class and
@@ -126,8 +139,8 @@ URLS = { <span style="color: #f1fa8c;">'reddit_emacs'</span> : <span style="colo
 </div>
 
 
-<div id="outline-container-orgadf6369" class="outline-3">
-<h3 id="orgadf6369"><span class="section-number-3">3.3</span> Store the article to maildir</h3>
+<div id="outline-container-orgfc6b7eb" class="outline-3">
+<h3 id="orgfc6b7eb"><span class="section-number-3">3.3</span> Store the article to maildir</h3>
 <div class="outline-text-3" id="text-3-3">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #ff79c6;">def</span> <span style="color: #50fa7b;">store</span>(key, article, path=MAILDIR_PATH):
@@ -143,8 +156,8 @@ URLS = { <span style="color: #f1fa8c;">'reddit_emacs'</span> : <span style="colo
 </div>
 
 
-<div id="outline-container-orgba98c44" class="outline-3">
-<h3 id="orgba98c44"><span class="section-number-3">3.4</span> Scrap the news</h3>
+<div id="outline-container-org31318f9" class="outline-3">
+<h3 id="org31318f9"><span class="section-number-3">3.4</span> Scrap the news</h3>
 <div class="outline-text-3" id="text-3-4">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #ff79c6;">for</span> k,v <span style="color: #ff79c6;">in</span> URLS.items():
@@ -167,8 +180,8 @@ URLS = { <span style="color: #f1fa8c;">'reddit_emacs'</span> : <span style="colo
 </div>
 
 
-<div id="outline-container-org2214bae" class="outline-2">
-<h2 id="org2214bae"><span class="section-number-2">4</span> Gnus configuration</h2>
+<div id="outline-container-orgbb9b895" class="outline-2">
+<h2 id="orgbb9b895"><span class="section-number-2">4</span> Gnus configuration</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 Simply add a secondary selection method:
@@ -197,8 +210,8 @@ a DOT. Have to create a symbolic link to a non dot folder.
 </div>
 
 
-<div id="outline-container-orgfc888dc" class="outline-2">
-<h2 id="orgfc888dc"><span class="section-number-2">5</span> Notes</h2>
+<div id="outline-container-org575829c" class="outline-2">
+<h2 id="org575829c"><span class="section-number-2">5</span> Notes</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 If you&rsquo;re intereseted in more powerfull packages there is <a href="https://pypi.org/project/news-fetch/">news-fetch</a> and
@@ -218,8 +231,8 @@ Might add a regular expression for fetching only specific URLs.
 
 
 
-<div id="outline-container-org920f4d3" class="outline-2">
-<h2 id="org920f4d3"><span class="section-number-2">6</span> Resources</h2>
+<div id="outline-container-org0faef44" class="outline-2">
+<h2 id="org0faef44"><span class="section-number-2">6</span> Resources</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 <a href="https://github.com/fhamborg/Giveme5W1H">Giveme5W1H</a> might be an intersting library to analyse articles and highlight
@@ -257,7 +270,7 @@ Twitter has an official API <a href="https://python-twitter.readthedocs.io/en/la
 <div id="postamble" class="status">
 <p class="date">Date: 2021-01-31 Sun 00:00</p>
 <p class="author">Author: Maurizio Minelli</p>
-<p class="date">Created: 2021-02-13 Sat 18:07</p>
+<p class="date">Created: 2021-02-13 Sat 18:37</p>
 </div>
 </body>
 </html>
