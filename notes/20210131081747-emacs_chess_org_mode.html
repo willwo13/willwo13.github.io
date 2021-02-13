@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2021-02-13 Sat 18:37 -->
+<!-- 2021-02-13 Sat 19:13 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Emacs chess &amp; Org mode</title>
@@ -27,8 +27,8 @@
 <header>
 <h1 class="title">Emacs chess &amp; Org mode</h1>
 </header>
-<div id="outline-container-org70142bb" class="outline-2">
-<h2 id="org70142bb"><span class="section-number-2">1</span> Abstract</h2>
+<div id="outline-container-org36d1175" class="outline-2">
+<h2 id="org36d1175"><span class="section-number-2">1</span> Abstract</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 It bould be nice to visualize and analyze chess PGN source blocks from notes
@@ -47,11 +47,11 @@ chess analysis output, preferably all in one window.</li>
 </div>
 </div>
 
-<div id="outline-container-orgdd2e8c8" class="outline-2">
-<h2 id="orgdd2e8c8"><span class="section-number-2">2</span> Screenshot&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ATTACH">ATTACH</span></span></h2>
+<div id="outline-container-org8220b94" class="outline-2">
+<h2 id="org8220b94"><span class="section-number-2">2</span> Screenshot&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ATTACH">ATTACH</span></span></h2>
 <div class="outline-text-2" id="text-2">
 
-<figure id="org24ca96b">
+<figure id="orge6a3ea8">
 <img src="/attach/5e/6c4866-5270-492a-86d7-2b2dba8a1597/2021-01-31_13-33-58_screenshot.png" alt="2021-01-31_13-33-58_screenshot.png">
 
 </figure>
@@ -59,8 +59,8 @@ chess analysis output, preferably all in one window.</li>
 </div>
 
 
-<div id="outline-container-orgcfc23df" class="outline-2">
-<h2 id="orgcfc23df"><span class="section-number-2">3</span> Prerequisits</h2>
+<div id="outline-container-org9d3b091" class="outline-2">
+<h2 id="org9d3b091"><span class="section-number-2">3</span> Prerequisits</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>emacs-chess</li>
@@ -69,8 +69,8 @@ chess analysis output, preferably all in one window.</li>
 </div>
 </div>
 
-<div id="outline-container-orga733b46" class="outline-2">
-<h2 id="orga733b46"><span class="section-number-2">4</span> Usage</h2>
+<div id="outline-container-org99a60a8" class="outline-2">
+<h2 id="org99a60a8"><span class="section-number-2">4</span> Usage</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 This is what we wan&rsquo;t. Write org-babel source block as pgn notation and then
@@ -104,8 +104,8 @@ map. The full keybindings can be shown like usual with <code>C-h m</code> f.ex:
 </div>
 
 
-<div id="outline-container-org07fafb0" class="outline-2">
-<h2 id="org07fafb0"><span class="section-number-2">5</span> Fine tune emacs-chess settings</h2>
+<div id="outline-container-org316ff81" class="outline-2">
+<h2 id="org316ff81"><span class="section-number-2">5</span> Fine tune emacs-chess settings</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 Images of the pieces are compatible with xboard and are locaed in
@@ -133,8 +133,8 @@ scaling.
 </div>
 
 
-<div id="outline-container-org19648a7" class="outline-2">
-<h2 id="org19648a7"><span class="section-number-2">6</span> Helper functions</h2>
+<div id="outline-container-org6ca86b7" class="outline-2">
+<h2 id="org6ca86b7"><span class="section-number-2">6</span> Helper functions</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 We need some herlper functions to make tailor the behavior as we want.
@@ -193,8 +193,8 @@ the current buffer as bable source block.
 </div>
 
 
-<div id="outline-container-org80880ed" class="outline-2">
-<h2 id="org80880ed"><span class="section-number-2">7</span> Org Babl execute block</h2>
+<div id="outline-container-org068eaa0" class="outline-2">
+<h2 id="org068eaa0"><span class="section-number-2">7</span> Org Babl execute block</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 We need to define the execute function for org-babel. Idally this will return an
@@ -223,10 +223,10 @@ rendered svg image.
 </div>
 
 
-<div id="outline-container-org4a20685" class="outline-2">
-<h2 id="org4a20685"><span class="section-number-2">8</span> Render with python</h2>
+<div id="outline-container-org82dcfa6" class="outline-2">
+<h2 id="org82dcfa6"><span class="section-number-2">8</span> Render with python</h2>
 <div class="outline-text-2" id="text-8">
-<pre class="example" id="org7556ec3">
+<pre class="example" id="org2044829">
 [Event "Checkmate the opponent in 1 move"]
 [Site "lichess.org"]
 [FEN "r4nk1/pp2r1p1/2p1P2p/3p1P1N/8/8/PPPK4/6RR w - - 0 1"]
@@ -267,7 +267,7 @@ board = game.board()
 <div id="postamble" class="status">
 <p class="date">Date: 2021-01-31 Sun 00:00</p>
 <p class="author">Author: Maurizio Minelli</p>
-<p class="date">Created: 2021-02-13 Sat 18:37</p>
+<p class="date">Created: 2021-02-13 Sat 19:13</p>
 </div>
 </body>
 </html>
