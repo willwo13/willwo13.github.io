@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2021-02-13 Sat 18:07 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Howto filter org-attach links before export</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="Maurizio Minelli">
+<link rel="stylesheet" type="text/css" href="../../../style.css"/>
+</head>
+<body>
+<div id="content">
+<header>
+<h1 class="title">Howto filter org-attach links before export</h1>
+</header><p>
+I use to export roam notes directly an use org-attach to include images. The
+disadvantge is that the resulting html img tag contains a absolute path to the
+attach directory.
+</p>
+
+<p>
+This can be solved with the following snippet:
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #61bfff;">(</span><span style="color: #ff79c6;">defun</span> <span style="color: #50fa7b;">+filter-org-html--format-image</span> <span style="color: #ff79c6;">(</span>result<span style="color: #ff79c6;">)</span>
+  <span style="color: #ff79c6;">(</span><span style="color: #ff79c6;">when</span> <span style="color: #50fa7b;">(</span><span style="color: #50fa7b;">string-match-p</span> <span style="color: #f1fa8c;">"file://.*.attach"</span> result<span style="color: #50fa7b;">)</span>
+    <span style="color: #50fa7b;">(</span><span style="color: #50fa7b;">replace-regexp-in-string</span> <span style="color: #f1fa8c;">"file://.*.attach"</span> <span style="color: #f1fa8c;">"attach"</span> result<span style="color: #50fa7b;">)</span><span style="color: #ff79c6;">)</span><span style="color: #61bfff;">)</span>
+
+<span style="color: #61bfff;">(</span><span style="color: #50fa7b;">advice-add</span> <span style="color: #ff79c6;">'</span><span style="color: #8be9fd;">org-html--format-image</span> <span style="color: #ffb86c;">:filter-return</span> <span style="color: #ff79c6;">#'</span><span style="color: #8be9fd;">+filter-org-html--format-image</span><span style="color: #61bfff;">)</span>
+</pre>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2021-02-13 Sat 00:00</p>
+<p class="author">Author: Maurizio Minelli</p>
+<p class="date">Created: 2021-02-13 Sat 18:07</p>
+</div>
+</body>
+</html>

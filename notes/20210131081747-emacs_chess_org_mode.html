@@ -1,52 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2021-02-04 Thu 22:30 -->
+<!-- 2021-02-13 Sat 18:07 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Emacs chess &amp; Org mode</title>
 <meta name="generator" content="Org mode">
 <meta name="author" content="Maurizio Minelli">
-<link rel="stylesheet" type="text/css" href="style.css"/>
-<link rel="stylesheet" type="text/css" href="style.css"/>
+<link rel="stylesheet" type="text/css" href="../style.css"/>
 </head>
 <body>
-<div id="preamble" class="status">
-<div id="org-page-header">
-   <div>
-    <a accesskey="h" href="notes.html"> UP </a> |
-   <a accesskey="H" href="index.html"> HOME </a>
-</div>
-<div>
-<a href="notes.xml"> RSS </a> |
-<a href="https://github.com/willwo13/willwo13.github.io"> Source </a> |
-<a href="https://creativecommons.org/licenses/by-sa/4.0/"> License </a>
-</div>
-</div>
-</div>
 <div id="content">
+<header>
 <h1 class="title">Emacs chess &amp; Org mode</h1>
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#org65efe54">Abstract</a></li>
-<li><a href="#org80a6b7a">Screenshot&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ATTACH">ATTACH</span></span></a></li>
-<li><a href="#org2fd54c2">Prerequisits</a></li>
-<li><a href="#org8e0cc1d">Usage</a></li>
-<li><a href="#org909ad9f">Fine tune emacs-chess settings</a></li>
-<li><a href="#orgde61c86">Helper functions</a></li>
-<li><a href="#orgb69fd5f">Org Babl execute block</a></li>
-<li><a href="#org2bd2178">Render with python</a></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-org65efe54" class="outline-2">
-<h2 id="org65efe54">Abstract</h2>
-<div class="outline-text-2" id="text-org65efe54">
+</header>
+<div id="outline-container-org758994a" class="outline-2">
+<h2 id="org758994a"><span class="section-number-2">1</span> Abstract</h2>
+<div class="outline-text-2" id="text-1">
 <p>
-Wouldn&rsquo;t be nice to visualize and analyze chess PGN source blocks from notes
+It bould be nice to visualize and analyze chess PGN source blocks from notes
 written in org-mode with emacs-chess. When we <code>C-c C-c</code> on the org-bable source
 block an onubtrisve chess board should open with the default functionality of
 emacs-chess.
@@ -62,21 +34,21 @@ chess analysis output, preferably all in one window.</li>
 </div>
 </div>
 
-<div id="outline-container-org80a6b7a" class="outline-2">
-<h2 id="org80a6b7a">Screenshot&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ATTACH">ATTACH</span></span></h2>
-<div class="outline-text-2" id="text-org80a6b7a">
+<div id="outline-container-orgb8580e1" class="outline-2">
+<h2 id="orgb8580e1"><span class="section-number-2">2</span> Screenshot&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ATTACH">ATTACH</span></span></h2>
+<div class="outline-text-2" id="text-2">
 
-<div id="orgafe645d" class="figure">
-<p><img src="file:///home/mau/Notes/.attach/5e/6c4866-5270-492a-86d7-2b2dba8a1597/2021-01-31_13-33-58_screenshot.png" alt="2021-01-31_13-33-58_screenshot.png">
-</p>
+<figure id="org15b7225">
+<img src="/attach/5e/6c4866-5270-492a-86d7-2b2dba8a1597/2021-01-31_13-33-58_screenshot.png" alt="2021-01-31_13-33-58_screenshot.png">
+
+</figure>
 </div>
 </div>
-</div>
 
 
-<div id="outline-container-org2fd54c2" class="outline-2">
-<h2 id="org2fd54c2">Prerequisits</h2>
-<div class="outline-text-2" id="text-org2fd54c2">
+<div id="outline-container-orgac04baa" class="outline-2">
+<h2 id="orgac04baa"><span class="section-number-2">3</span> Prerequisits</h2>
+<div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>emacs-chess</li>
 <li>stockfish</li>
@@ -84,9 +56,9 @@ chess analysis output, preferably all in one window.</li>
 </div>
 </div>
 
-<div id="outline-container-org8e0cc1d" class="outline-2">
-<h2 id="org8e0cc1d">Usage</h2>
-<div class="outline-text-2" id="text-org8e0cc1d">
+<div id="outline-container-orgf2e919d" class="outline-2">
+<h2 id="orgf2e919d"><span class="section-number-2">4</span> Usage</h2>
+<div class="outline-text-2" id="text-4">
 <p>
 This is what we wan&rsquo;t. Write org-babel source block as pgn notation and then
 with <code>C-c C-c</code> the boards open in alaysis mode and we can edit the pgn and
@@ -119,9 +91,9 @@ map. The full keybindings can be shown like usual with <code>C-h m</code> f.ex:
 </div>
 
 
-<div id="outline-container-org909ad9f" class="outline-2">
-<h2 id="org909ad9f">Fine tune emacs-chess settings</h2>
-<div class="outline-text-2" id="text-org909ad9f">
+<div id="outline-container-org689728d" class="outline-2">
+<h2 id="org689728d"><span class="section-number-2">5</span> Fine tune emacs-chess settings</h2>
+<div class="outline-text-2" id="text-5">
 <p>
 Images of the pieces are compatible with xboard and are locaed in
 <code>chess-images-directory</code> but is not a priority to get more images,the default are
@@ -131,7 +103,7 @@ scaling.
 </div>
 
 <div id="outline-container-chess-config" class="outline-3">
-<h3 id="chess-config">Configuration</h3>
+<h3 id="chess-config"><span class="section-number-3">5.1</span> Configuration</h3>
 <div class="outline-text-3" id="text-chess-config">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #61bfff;">(</span><span style="color: #ff79c6;">after!</span> chess
@@ -148,16 +120,16 @@ scaling.
 </div>
 
 
-<div id="outline-container-orgde61c86" class="outline-2">
-<h2 id="orgde61c86">Helper functions</h2>
-<div class="outline-text-2" id="text-orgde61c86">
+<div id="outline-container-org0c21d2a" class="outline-2">
+<h2 id="org0c21d2a"><span class="section-number-2">6</span> Helper functions</h2>
+<div class="outline-text-2" id="text-6">
 <p>
 We need some herlper functions to make tailor the behavior as we want.
 </p>
 </div>
 
 <div id="outline-container-chess-helpers" class="outline-3">
-<h3 id="chess-helpers">Helpers</h3>
+<h3 id="chess-helpers"><span class="section-number-3">6.1</span> Helpers</h3>
 <div class="outline-text-3" id="text-chess-helpers">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #61bfff;">(</span><span style="color: #ff79c6;">defun</span> <span style="color: #50fa7b;">display-pgn</span> <span style="color: #ff79c6;">(</span>pgn<span style="color: #ff79c6;">)</span>
@@ -208,9 +180,9 @@ the current buffer as bable source block.
 </div>
 
 
-<div id="outline-container-orgb69fd5f" class="outline-2">
-<h2 id="orgb69fd5f">Org Babl execute block</h2>
-<div class="outline-text-2" id="text-orgb69fd5f">
+<div id="outline-container-org1b37211" class="outline-2">
+<h2 id="org1b37211"><span class="section-number-2">7</span> Org Babl execute block</h2>
+<div class="outline-text-2" id="text-7">
 <p>
 We need to define the execute function for org-babel. Idally this will return an
 rendered svg image.
@@ -218,7 +190,7 @@ rendered svg image.
 </div>
 
 <div id="outline-container-chess-babel" class="outline-3">
-<h3 id="chess-babel">Org babel execute</h3>
+<h3 id="chess-babel"><span class="section-number-3">7.1</span> Org babel execute</h3>
 <div class="outline-text-3" id="text-chess-babel">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #61bfff;">(</span><span style="color: #ff79c6;">defun</span> <span style="color: #50fa7b;">org-babel-execute:pgn</span> <span style="color: #ff79c6;">(</span>body params<span style="color: #ff79c6;">)</span>
@@ -238,10 +210,10 @@ rendered svg image.
 </div>
 
 
-<div id="outline-container-org2bd2178" class="outline-2">
-<h2 id="org2bd2178">Render with python</h2>
-<div class="outline-text-2" id="text-org2bd2178">
-<pre class="example" id="org7463380">
+<div id="outline-container-orga394585" class="outline-2">
+<h2 id="orga394585"><span class="section-number-2">8</span> Render with python</h2>
+<div class="outline-text-2" id="text-8">
+<pre class="example" id="orgdd7a579">
 [Event "Checkmate the opponent in 1 move"]
 [Site "lichess.org"]
 [FEN "r4nk1/pp2r1p1/2p1P2p/3p1P1N/8/8/PPPK4/6RR w - - 0 1"]
@@ -282,8 +254,7 @@ board = game.board()
 <div id="postamble" class="status">
 <p class="date">Date: 2021-01-31 Sun 00:00</p>
 <p class="author">Author: Maurizio Minelli</p>
-<p class="date">Created: 2021-02-04 Thu 22:30</p>
-<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.5)</p>
+<p class="date">Created: 2021-02-13 Sat 18:07</p>
 </div>
 </body>
 </html>
